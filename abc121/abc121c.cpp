@@ -1,22 +1,40 @@
 #include <iostream>
-#include <string>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
-    int N;
+    int N, M;
 
-    cin >> N;
+    cin >> N >> M;
 
-    int a[N];
-    string S;
+    int A[N], B[N];
+
+    for (int i = 0; i < N; i++)
+    {
+        cin >> A[i] >> B[i];
+    }
+
+    sort(A, A + N);
 
     for(int i = 0; i < N; i++)
     {
-        cin >> a[i];
+        B[i] = B[]
     }
     
-    int ans;
+
+    int ans = 0;
+    int store = 0;
+
+    for (int i = 0; i < M; i++)
+    {
+        if (B[store] == 0)
+        {
+            store++;
+        }
+        ans = ans + A[store];
+        B[store]--;
+    }
 
     cout << ans << endl;
 
