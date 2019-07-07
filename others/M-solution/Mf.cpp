@@ -1,5 +1,7 @@
 #include <iostream>
+#include <cmath>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 int main()
@@ -9,6 +11,7 @@ int main()
     cin >> N;
 
     int a[N];
+    
     string S;
 
     for(int i = 0; i < N; i++)
@@ -16,9 +19,7 @@ int main()
         cin >> a[i];
     }
     
-    int ans;
-
-    cout << ans << endl;
+    cout <<  << endl;
 
     return 0;
 }
