@@ -1,44 +1,24 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main()
 {
-    int N, M, C;
+    int N;
 
-    cin >> N >> M >> C;
+    cin >> N;
 
-    int B[M + 1];
-    int A[N + 1][M + 1];
+    int a[N];
+    string S;
 
-    for (int i = 1; i <= M; i++)
+    for(int i = 0; i < N; i++)
     {
-        cin >> B[i];
+        cin >> a[i];
     }
+    
+    int ans;
 
-    for (int i = 1; i <= N; i++)
-    {
-        for (int j = 1; j <= M; j++)
-        {
-            cin >> A[i][j];
-        }
-    }
-
-    int source;
-    int count = 0;
-    for (int i = 1; i <= N; i++)
-    {
-        source = C;
-        for (int j = 1; j <= M; j++)
-        {
-            source = source + A[i][j] * B[j];
-        }
-        if (source > 0)
-        {
-            count++;
-        }
-    }
-
-    cout << count << endl;
+    cout << ans << endl;
 
     return 0;
 }
