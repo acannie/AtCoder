@@ -1,24 +1,17 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 int main()
 {
-    int N;
+    int H, W;
+    int h, w;
 
-    cin >> N;
+    cin >> H >> W;
+    cin >> h >> w;
 
-    int a[N];
-    string S;
+    int white = H * W - (h * W + w * (H - h));
 
-    for(int i = 0; i < N; i++)
-    {
-        cin >> a[i];
-    }
-    
-    int ans;
-
-    cout << ans << endl;
+    cout << white << endl;
 
     return 0;
 }
