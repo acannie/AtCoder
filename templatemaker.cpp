@@ -8,7 +8,10 @@ using namespace std;
 void sentence(FILE *fi)
 {
     fprintf(fi, "#include <iostream>\n");
-    fprintf(fi, "#include <string>\n#include <algorithm>\n#include <cmath>\n");
+    fprintf(fi, "#include <string>\n");
+    fprintf(fi, "#include <algorithm>\n");
+    fprintf(fi, "#include <cmath>\n");
+    fprintf(fi, "#include <vector>\n");
     fprintf(fi, "using namespace std;\n");
     fprintf(fi, "\n");
     fprintf(fi, "int main()\n");
