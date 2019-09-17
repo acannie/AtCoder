@@ -1,17 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 #include <direct.h>
 using namespace std;
 
 void sentence(FILE *fi)
 {
-    fprintf(fi, "#include <iostream>\n");
-    fprintf(fi, "#include <string>\n");
-    fprintf(fi, "#include <algorithm>\n");
-    fprintf(fi, "#include <cmath>\n");
-    fprintf(fi, "#include <vector>\n");
+    fprintf(fi, "#include <bits/stdc++.h>\n");
     fprintf(fi, "using namespace std;\n");
     fprintf(fi, "\n");
     fprintf(fi, "int main()\n");
@@ -42,7 +35,7 @@ int main()
     string contest_name;
     char contest_abc;
     FILE *fi;
-    char filename[30];
+    char filename[100];
 
     /* コンテスト名読み込み */
     cout << "Input contest name --> ";

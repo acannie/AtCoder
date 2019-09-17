@@ -1,14 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 #include <direct.h>
 using namespace std;
 
 void sentence(FILE *fi)
 {
-    fprintf(fi, "#include <iostream>\n");
-    fprintf(fi, "#include <string>\n#include <algorithm>\n#include <cmath>\n");
+    fprintf(fi, "#include <bits/stdc++.h>\n");
     fprintf(fi, "using namespace std;\n");
     fprintf(fi, "\n");
     fprintf(fi, "int main()\n");
