@@ -14,9 +14,9 @@ void sentence(FILE *fi)
     fprintf(fi, "\n");
     fprintf(fi, "\tcin >> N;\n");
     fprintf(fi, "\t\n");
-    fprintf(fi, "\tint a[N + 1];\n");
+    fprintf(fi, "\tint a[N];\n");
     fprintf(fi, " \t\n");
-    fprintf(fi, " \tfor(int i = 1; i <= N; i++)\n");
+    fprintf(fi, " \tfor(int i = 0; i < N; i++)\n");
     fprintf(fi, " \t{\n");
     fprintf(fi, " \t\tcin >> a[i];\n");
     fprintf(fi, " \t}\n");
