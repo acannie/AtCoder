@@ -6,18 +6,19 @@ int main()
 	int N;
 	string S;
 
-	cin >> N;
-	
-	int a[N];
- 	
- 	for(int i = 0; i < N; i++)
- 	{
- 		cin >> a[i];
- 	}
-  	
-  	int ans;
-  	
-   	cout << ans << endl;
-  	
- 	return 0;
- }
+	cin >> N >> S;
+
+	int ans = 1;
+
+	for (int i = 1; i < N; i++)
+	{
+		if (S[i] != S[i - 1])
+		{
+			ans++;
+		}
+	}
+
+	cout << ans << endl;
+
+	return 0;
+}
