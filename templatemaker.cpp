@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include <direct.h>
+#include <sys/stat.h>
 using namespace std;
 
 void sentence(FILE *fi)
@@ -36,9 +36,15 @@ int main()
     char contest_abc;
     FILE *fi;
     char filename[100];
+    string directory_name;
+
+    /* ディレクトリ名読み込み */
+    cout << "Input the directory name. " << endl;
+    cout << "If nothing, input n --> ";
+    cin >> directory_name;
 
     /* コンテスト名読み込み */
-    cout << "Input contest name --> ";
+    cout << "Input the contest name --> ";
     cin >> contest_name;
 
     /* 問題数読み込み */
@@ -46,7 +52,7 @@ int main()
     cin >> contest_abc;
 
     /* ディレクトリ生成 */
-    if (_mkdir(contest_name.c_str()) == 0)
+    if (mkdir(contest_name.c_str(), 0777) == 0)
     {
         printf("succeed to make dir.\n");
     }
@@ -56,10 +62,19 @@ int main()
     }
 
     /* cppファイル生成 */
+
     for (char i = 'a'; i <= contest_abc; i++)
     {
-        sprintf(filename, "%s/%s%c.cpp", contest_name.c_str(), contest_name.c_str(), i);
-        fi = fopen(filename, "w");
+        if (directory_name == "n")
+        {
+            sprintf(filename, "%s/%s%c.cpp", contest_name.c_str(), contest_name.c_str(), i);
+            fi = fopen(filename, "w");
+        }
+        else
+        {
+            sprintf(filename, "%s/%s/%s%c.cpp", directory_name.c_str(), contest_name.c_str(), contest_name.c_str(), i);
+            fi = fopen(filename, "w");
+        }
 
         if (fi == NULL)
         {
