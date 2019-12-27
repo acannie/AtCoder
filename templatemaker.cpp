@@ -34,6 +34,7 @@ int main()
 {
     string contest_name;
     char contest_abc;
+
     FILE *fi;
     char filename[100];
     string directory_name;
@@ -51,28 +52,27 @@ int main()
     cout << "What is the backmost alphabet? --> ";
     cin >> contest_abc;
 
-    /* ディレクトリ生成 */
-    if (mkdir(contest_name.c_str(), 0777) == 0)
-    {
-        printf("succeed to make dir.\n");
-    }
-    else
-    {
-        printf("failed to make dir.\n");
-    }
+    // /* ディレクトリ生成 */
+    // if (mkdir(contest_name.c_str(), 0777) == 0)
+    // {
+    //     printf("succeed to make dir.\n");
+    // }
+    // else
+    // {
+    //     printf("failed to make dir.\n");
+    // }
 
     /* cppファイル生成 */
-
     for (char i = 'a'; i <= contest_abc; i++)
     {
         if (directory_name == "n")
         {
-            sprintf(filename, "%s/%s%c.cpp", contest_name.c_str(), contest_name.c_str(), i);
+            sprintf(filename, "%s/%c.cpp", contest_name.c_str(), i);
             fi = fopen(filename, "w");
         }
         else
         {
-            sprintf(filename, "%s/%s/%s%c.cpp", directory_name.c_str(), contest_name.c_str(), contest_name.c_str(), i);
+            sprintf(filename, "%s/%s/%c.cpp", directory_name.c_str(), contest_name.c_str(), i);
             fi = fopen(filename, "w");
         }
 
@@ -83,6 +83,7 @@ int main()
         }
 
         sentence(fi);
+        fclose(fi);
     }
 
     return 0;
