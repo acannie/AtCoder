@@ -1,90 +1,85 @@
 #include <bits/stdc++.h>
-#include <sys/stat.h>
+#include <experimental/filesystem>
 using namespace std;
 
-void sentence(FILE *fi)
-{
-    fprintf(fi, "#include <bits/stdc++.h>\n");
-    fprintf(fi, "using namespace std;\n");
-    fprintf(fi, "\n");
-    fprintf(fi, "int main()\n");
-    fprintf(fi, "{\n");
-    fprintf(fi, "\tint N;\n");
-    fprintf(fi, "\tstring S;\n");
-    fprintf(fi, "\n");
-    fprintf(fi, "\tcin >> N;\n");
-    fprintf(fi, "\t\n");
-    fprintf(fi, "\tint a[N];\n");
-    fprintf(fi, " \t\n");
-    fprintf(fi, " \tfor(int i = 0; i < N; i++)\n");
-    fprintf(fi, " \t{\n");
-    fprintf(fi, " \t\tcin >> a[i];\n");
-    fprintf(fi, " \t}\n");
-    fprintf(fi, "  \t\n");
-    fprintf(fi, "  \tint ans;\n");
-    fprintf(fi, "  \t\n");
-    fprintf(fi, "   \tcout << ans << endl;\n");
-    fprintf(fi, "  \t\n");
-    fprintf(fi, " \treturn 0;\n");
-    fprintf(fi, " }\n");
-    fclose(fi);
-}
+std::string TEMPLATE = 
+R"(#include <bits/stdc++.h>
+using namespace std;
 
 int main()
 {
+    int N;
+    string S;
+
+    cin >> N;
+    
+    int a[N];
+     
+    for(int i = 0; i < N; i++)
+    {
+        cin >> a[i];
+    }
+      
+    int ans;
+      
+    cout << ans << endl;
+      
+    return 0;
+}
+)";
+
+int main()
+{
+    string contest_type_name;
     string contest_name;
-    char contest_abc;
+    int number_of_tasks;
 
-    FILE *fi;
-    char filename[100];
-    string directory_name;
-
-    /* ディレクトリ名読み込み */
-    cout << "Input the directory name. " << endl;
-    cout << "If nothing, input n --> ";
-    cin >> directory_name;
+    /* コンテストの種類名読み込み */
+    cout << "Input the contest type name. " << endl;
+    cout << "If you don't want to crete contest type directory, input n --> ";
+    cin >> contest_type_name;
 
     /* コンテスト名読み込み */
     cout << "Input the contest name --> ";
     cin >> contest_name;
 
     /* 問題数読み込み */
-    cout << "What is the backmost alphabet? --> ";
-    cin >> contest_abc;
+    cout << "How many tasks in the contest? --> ";
+    cin >> number_of_tasks;
 
-    // /* ディレクトリ生成 */
-    // if (mkdir(contest_name.c_str(), 0777) == 0)
-    // {
-    //     printf("succeed to make dir.\n");
-    // }
-    // else
-    // {
-    //     printf("failed to make dir.\n");
-    // }
+    cout << "Start to create files" << std::endl;
 
     /* cppファイル生成 */
-    for (char i = 'a'; i <= contest_abc; i++)
+    for (int i = 0; i < number_of_tasks; i++)
     {
-        if (directory_name == "n")
+        string task_name = string() + (char)('a' + i);
+
+        string directory_name;
+        string filename;
+        if (contest_type_name != "n")
         {
-            sprintf(filename, "%s/%c.cpp", contest_name.c_str(), i);
-            fi = fopen(filename, "w");
+            directory_name += contest_type_name + "/";
         }
-        else
+        directory_name += contest_name;
+        std::experimental::filesystem::create_directories(directory_name);
+
+        /* crete filename value as "./${directory=name}(if exists)/${contest_name}/${task_name from index}.cpp" */
+        filename = "./" + directory_name + "/" + task_name + ".cpp";
+        std::cout << filename << std::endl;
+
+        std::ofstream ofs(filename);
+        if (!ofs)
         {
-            sprintf(filename, "%s/%s/%c.cpp", directory_name.c_str(), contest_name.c_str(), i);
-            fi = fopen(filename, "w");
+            std::cout << "ファイルが開けませんでした。" << std::endl;
+            return 0;
         }
 
-        if (fi == NULL)
-        {
-            fprintf(stderr, "error!\n");
-            exit(1);
-        }
+        ofs << TEMPLATE << std::endl;
 
-        sentence(fi);
-        fclose(fi);
+        ofs.close();
     }
+
+    std::cout << "Done! :)" << std::endl;
 
     return 0;
 }
