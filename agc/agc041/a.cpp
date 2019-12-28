@@ -3,19 +3,57 @@ using namespace std;
 
 int main()
 {
-    int N;
+    long long int N;
+    long long int A, B;
 
-    cin >> N;
+    cin >> N >> A >> B;
 
-    int a[N];
-    string S;
+    long long int ans = 0;
 
-    for(int i = 0; i < N; i++)
+    if ((B - A) % 2 == 0)
     {
-        cin >> a[i];
+        ans = (B - A) / 2;
     }
-    
-    int ans;
+    else
+    {
+        long long int distanceFrom1 = A - 1;
+        long long int distanceFromN = N - B;
+
+        long long int nearEnd;
+        long long int farEnd;
+        if (distanceFrom1 < distanceFromN)
+        {
+            nearEnd = A;
+            farEnd = B;
+
+            if (B - A == 1 || B - A == 2)
+            {
+                ans = B - 1;
+            }
+            else
+            {
+                ans += (A - 1) + 1;
+                B = B - ((A - 1) + 1);
+                ans += (B - 1) / 2;
+            }
+        }
+        else
+        {
+            nearEnd = B;
+            farEnd = A;
+
+            if (B - A == 1 || B - A == 2)
+            {
+                ans = N - A;
+            }
+            else
+            {
+                ans += (N - B) + 1;
+                A = A + ((N - B) + 1);
+                ans += (N - A) / 2;
+            }
+        }
+    }
 
     cout << ans << endl;
 
