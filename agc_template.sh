@@ -1,12 +1,12 @@
 #!/bin/bash
 
-echo "Input contest number of abc."
+echo "Input contest number of agc."
 read contest_number
 
 BASEDIR=$(dirname "$0")
 $BASEDIR/templatemaker << !
-abc
-abc$contest_number
+agc
+agc$contest_number
 6
 !
 exit 0
