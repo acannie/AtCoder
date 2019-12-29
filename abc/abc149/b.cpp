@@ -3,21 +3,29 @@ using namespace std;
 
 int main()
 {
-    int N;
+    long long int A, B, K;
 
-    cin >> N;
+    cin >> A >> B >> K;
 
-    int a[N];
-    string S;
+    long long int takahashi = A;
+    long long int aoki = B;
 
-    for(int i = 0; i < N; i++)
+    if (K <= A)
     {
-        cin >> a[i];
+        takahashi -= K;
     }
-    
-    int ans;
+    else if (A < K && K < A + B)
+    {
+        takahashi = 0;
+        aoki -= K - A;
+    }
+    else if (A + B <= K)
+    {
+        takahashi = 0;
+        aoki = 0;
+    }
 
-    cout << ans << endl;
+    cout << takahashi << " " << aoki << endl;
 
     return 0;
 }

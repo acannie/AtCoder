@@ -3,21 +3,26 @@ using namespace std;
 
 int main()
 {
-    int N;
+    long long int N, M;
 
-    cin >> N;
+    cin >> N >> M;
 
-    int a[N];
-    string S;
+    long long int a[N];
 
-    for(int i = 0; i < N; i++)
+    for (long long int i = 0; i < N; i++)
     {
         cin >> a[i];
     }
-    
-    int ans;
 
-    cout << ans << endl;
+    sort(a, a + N);
+
+    long long int happy = 0;
+
+    
+
+    
+
+    cout << happy << endl;
 
     return 0;
 }

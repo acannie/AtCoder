@@ -3,21 +3,22 @@ using namespace std;
 
 int main()
 {
-    int N;
+    string S, T;
 
-    cin >> N;
+    cin >> S >> T;
 
-    int a[N];
-    string S;
+    // 解法1
+    cout << T << S << endl;
 
-    for(int i = 0; i < N; i++)
-    {
-        cin >> a[i];
-    }
-    
-    int ans;
+    // 解法2
+    /*
+    string ans;
+
+    ans += T;
+    ans += S;
 
     cout << ans << endl;
+    */
 
     return 0;
 }
