@@ -1,23 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+bool is_prime(int x)
+{
+    for (int i = 2; i * i < x; i++)
+    {
+        if (x % i == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main()
 {
-    int N;
+    int X;
 
-    cin >> N;
+    cin >> X;
 
-    int a[N];
-    string S;
+    int x = X;
 
-    for(int i = 0; i < N; i++)
+    while (!is_prime(x))
     {
-        cin >> a[i];
+        x++;
     }
     
-    int ans;
-
-    cout << ans << endl;
-
+    cout << x << endl;
     return 0;
 }
