@@ -10,7 +10,7 @@ int main(int const argc, const char* const argv[], char* envv[])
 
     /* コンテストの種類名読み込み */
     std::cout << "Input the contest type name. " << std::endl;
-    std::cout << "If you don't want to crete contest type directory, input n --> ";
+    std::cout << "If you don't want to create contest type directory, input n --> ";
     std::cin >> contest_type_name;
 
     /* コンテスト名読み込み */

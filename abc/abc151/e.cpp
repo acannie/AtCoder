@@ -3,8 +3,6 @@ using namespace std;
 
 int main()
 {
-    /* ------- 宣言と入力 ------- */
-
     int N;
 
     cin >> N;
@@ -16,8 +14,6 @@ int main()
     {
         cin >> a[i];
     }
-
-    /* ------- 計算 ------- */
     
     int ans;
 
