@@ -18,7 +18,7 @@ int main()
  		cin >> a[i];
  	}
   	
-  	int ans;
+  	int ans = 0;
   	
    	cout << ans << endl;
   	

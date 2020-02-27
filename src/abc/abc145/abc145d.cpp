@@ -19,48 +19,48 @@ int return12(int n)
 
 int main()
 {
-    int X, Y;
+    // int X, Y;
 
-    cin >> X >> Y;
+    // cin >> X >> Y;
 
-    int maxXY = max(X, Y);
-    bool flg = false;
+    // int maxXY = max(X, Y);
+    // bool flg = false;
 
-    int num1;
-    int num2;
+    // int num1;
+    // int num2;
 
-    for (int i = 0; i < maxXY / 2 + 1; i++)
-    {
-        int judge = 0;
+    // for (int i = 0; i < maxXY / 2 + 1; i++)
+    // {
+    //     int judge = 0;
 
-        for (int j = maxXY; j > 0; j = j - 2)
-        {
-            judge += return12(1);
-            num1 = 
-        }
+    //     for (int j = maxXY; j > 0; j = j - 2)
+    //     {
+    //         judge += return12(1);
+    //         // num1 = 
+    //     }
 
-        for (int j = 0; j < i; j++)
-        {
-            judge += return12(2);
-        }
+    //     for (int j = 0; j < i; j++)
+    //     {
+    //         judge += return12(2);
+    //     }
 
-        if (judge == min(X, Y))
-        {
-            flg = true;
+    //     if (judge == min(X, Y))
+    //     {
+    //         flg = true;
 
-            break;
-        }
-    }
+    //         break;
+    //     }
+    // }
 
-    if (flg == false)
-    {
-        cout << "0" << endl;
-        return 0;
-    }
+    // if (flg == false)
+    // {
+    //     cout << "0" << endl;
+    //     return 0;
+    // }
 
-    int ans;
+    // int ans;
 
-    cout << ans << endl;
+    // cout << ans << endl;
 
     return 0;
 }

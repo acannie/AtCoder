@@ -19,7 +19,6 @@ int main()
         cin >> a[i];
     }
     
-    cout <<  << endl;
 
     return 0;
 }
