@@ -2,7 +2,69 @@
 #include <experimental/filesystem>
 namespace fs = std::experimental::filesystem;
 
-int main(int const argc, const char* const argv[], char* envv[])
+std::string read_file(fs::path template_path)
+{
+    /* template_tst.cppの中身をそのまま変数 templ に読み込む */
+    std::ifstream ifs(template_path);
+    if (ifs.fail())
+    {
+        std::cerr << "失敗" << std::endl;
+        return nullptr;
+    }
+    std::string templ((std::istreambuf_iterator<char>(ifs)),
+                      std::istreambuf_iterator<char>());
+    return templ;
+}
+
+fs::path get_relative_path(std::string src_type, std::string contest_type_name, std::string contest_name) {
+    fs::path relative_path = fs::path("");
+    if (contest_type_name != "n")
+    {
+        if (!src_type.empty())
+        {
+            relative_path.append(src_type);
+        }
+        relative_path = relative_path.append(contest_type_name);
+    }
+    relative_path = relative_path.append(contest_name);
+    return relative_path;
+}
+
+fs::path create_file_path(fs::path directory_path, std::string contest_name, std::string task_name, std::string file_suffix)
+{
+    /* crete filename value as "./${directory=name}(if exists)/${contest_name}/${contest_name}{task_name from index}${file_suffix}.cpp" */
+    fs::path file_path = directory_path.append(contest_name + task_name + file_suffix + ".cpp");
+
+    return file_path;
+}
+
+int create_file(std::string src_type, std::string templ, std::string task_name, fs::path path,
+                std::string contest_type_name, std::string contest_name, std::string file_suffix)
+{
+    /* cppファイル生成 */
+    fs::path relative_path = get_relative_path(src_type, contest_type_name, contest_name);
+    fs::path directory_path = fs::absolute(path).append(relative_path.generic_string());
+    fs::create_directories(directory_path);
+
+    /* crete filename value as "./${directory=name}(if exists)/${contest_name}/${contest_name}{task_name from index}${file_suffix}.cpp" */
+    fs::path file_path = create_file_path(directory_path, contest_name, task_name, file_suffix);
+    std::cout << file_path << std::endl;
+
+    std::ofstream ofs(file_path);
+    if (!ofs)
+    {
+        std::cout << "ファイルが開けませんでした。" << std::endl;
+        return -1;
+    }
+
+    ofs << templ << std::endl;
+
+    ofs.close();
+
+    return 0;
+}
+
+int main(int const argc, const char *const argv[], char *envv[])
 {
     std::string contest_type_name;
     std::string contest_name;
@@ -26,52 +88,32 @@ int main(int const argc, const char* const argv[], char* envv[])
     fs::path path = argv[0];
     path = fs::canonical(fs::absolute(path)).remove_filename();
 
-    fs::path template_path = fs::absolute(path).append("template.cpp");
+    fs::path src_template_path = fs::absolute(path).append("template.cpp");
 
-    /* template.cppの中身をそのまま変数 templ に読み込む */
-    std::ifstream ifs(template_path);
-    if (ifs.fail())
+    std::string src_templ = read_file(src_template_path);
+
+    for (int i = 0; i < number_of_tasks; i++)
     {
-        std::cerr << "失敗" << std::endl;
-        return -1;
+        std::string task_name = std::string() + (char)('a' + i);
+        int res = 0;
+        if ((res = create_file("src", src_templ, task_name, path, contest_type_name, contest_name, "")) != 0)
+        {
+            return res;
+        }
     }
-    std::string templ((std::istreambuf_iterator<char>(ifs)),
-                      std::istreambuf_iterator<char>());
 
-    /* cppファイル生成 */
+    fs::path tst_template_path = fs::absolute(path).append("template_tst.cpp");
+    std::string tst_templ = read_file(tst_template_path);
     for (int i = 0; i < number_of_tasks; i++)
     {
         std::string task_name = std::string() + (char)('a' + i);
 
-        fs::path directory_path = fs::absolute(path);
-        // std::string directory_name;
-        // std::string filename;
-        if (contest_type_name != "n")
+        std::string header_line = "#include \"" + create_file_path(get_relative_path("", contest_type_name, contest_name), contest_name, task_name, "").generic_string() + "\"\n";
+        int res = 0;
+        if ((res = create_file("tst", header_line + tst_templ, task_name, path, contest_type_name, contest_name, "_tst")) != 0)
         {
-            //directory_name += contest_type_name + "/";
-            directory_path = directory_path.append(contest_type_name);
+            return res;
         }
-        // directory_name += contest_name;
-        directory_path = directory_path.append(contest_name);
-        //fs::create_directories(directory_name);
-        fs::create_directories(directory_path);
-
-        /* crete filename value as "./${directory=name}(if exists)/${contest_name}/${task_name from index}.cpp" */
-        fs::path file_path = directory_path.append(task_name + ".cpp");
-        //filename = "./" + directory_name + "/" + task_name + ".cpp";
-        // std::cout << filename << std::endl;
-        std::cout << file_path << std::endl;
-
-        std::ofstream ofs(file_path);
-        if (!ofs)
-        {
-            std::cout << "ファイルが開けませんでした。" << std::endl;
-            return 0;
-        }
-
-        ofs << templ << std::endl;
-
-        ofs.close();
     }
 
     std::cout << "Done! :)" << std::endl;

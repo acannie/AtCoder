@@ -1,27 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void solve(std::istream& ist, std::ostream& ost)
+{
+    int a, b, c;
+    string s;
+    
+    //hundle input
+    ist >> a;
+
+    ist >> b >> c;
+
+    ist >> s;
+    
+    int sum = a + b + c;
+
+    ost << sum << " " << s << endl;
+}
+
+#ifndef DEBUG
 int main()
 {
-    /* ------- 宣言と入力 ------- */
-
-    int N;
-
-    cin >> N;
-
-    int a[N];
-    string S;
-
-    for(int i = 0; i < N; i++)
-    {
-        cin >> a[i];
-    }
-
-    /* ------- 計算 ------- */
-    
-    int ans;
-
-    cout << ans << endl;
-
+    solve(std::cin, std::cout);
     return 0;
 }
+#endif
