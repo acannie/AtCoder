@@ -1,4 +1,4 @@
-#include "others/abs/practiceA.cpp"
+#include "solve.h"
 #include "gtest/gtest.h"
 
 int main(int argc, char **argv) {

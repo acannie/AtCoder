@@ -76,7 +76,7 @@ void solve(std::istream& ist, std::ostream& ost)
     }
 }
 
-#ifndef DEBUG
+#ifdef WIMAIN
 int main()
 {
     solve(std::cin, std::cout);

@@ -1,4 +1,4 @@
-#include "abc/abc157/abc157a.cpp"
+#include "solve.h"
 #include "gtest/gtest.h"
 
 int main(int argc, char **argv) {
