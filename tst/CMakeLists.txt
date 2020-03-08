@@ -1,4 +1,4 @@
-file(GLOB_RECURSE files "*.cpp")
+file(GLOB_RECURSE files "${pattern}")
 
 foreach(file ${files})
     get_filename_component(filename "${file}" NAME_WE)
