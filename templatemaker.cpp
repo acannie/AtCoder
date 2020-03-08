@@ -88,6 +88,11 @@ int main(int const argc, const char *const argv[], char *envv[])
     fs::path path = argv[0];
     path = fs::canonical(fs::absolute(path)).remove_filename();
 
+    // If built with cmake, move parent from "build" directory
+#ifdef CMAKE_BUILD
+    path = path.parent_path();
+#endif
+
     fs::path src_template_path = fs::absolute(path).append("template.cpp");
 
     std::string src_templ = read_file(src_template_path);
@@ -108,9 +113,8 @@ int main(int const argc, const char *const argv[], char *envv[])
     {
         std::string task_name = std::string() + (char)('a' + i);
 
-        std::string header_line = "#include \"" + create_file_path(get_relative_path("", contest_type_name, contest_name), contest_name, task_name, "").generic_string() + "\"\n";
         int res = 0;
-        if ((res = create_file("tst", header_line + tst_templ, task_name, path, contest_type_name, contest_name, "_tst")) != 0)
+        if ((res = create_file("tst", tst_templ, task_name, path, contest_type_name, contest_name, "_tst")) != 0)
         {
             return res;
         }

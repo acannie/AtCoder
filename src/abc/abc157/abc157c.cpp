@@ -29,13 +29,13 @@ void solve(std::istream& ist, std::ostream& ost)
         if (i != 0 && p[i - 1].first == p[i].first && p[i - 1].second != p[i].second)
         {
             ost << "-1" << endl;
-            return 0;
+            return;
         }
 
         if (N > 1 && p[i].first == 1 && p[i].second == 0)
         {
             ost << "-1" << endl;
-            return 0;
+            return;
         }
     }
 
@@ -65,7 +65,7 @@ void solve(std::istream& ist, std::ostream& ost)
     ost << endl;
 }
 
-#ifndef DEBUG
+#ifdef WIMAIN
 int main()
 {
     solve(std::cin, std::cout);

@@ -1,5 +1,7 @@
-#include "abc/abc157/abc157a.cpp"
+#include "solve.h"
 #include "gtest/gtest.h"
+
+using namespace std::literals::string_literals;
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

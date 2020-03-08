@@ -17,7 +17,7 @@ void solve(std::istream& ist, std::ostream& ost)
     ost << ans << endl;
 }
 
-#ifndef DEBUG
+#ifdef WIMAIN
 int main()
 {
     solve(std::cin, std::cout);
