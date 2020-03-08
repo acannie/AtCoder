@@ -51,3 +51,7 @@ foreach(file ${files})
     set(LIBRARY ${filename}_lib)
     target_link_libraries(${BINARY} PUBLIC ${LIBRARY} gtest)
 endforeach(file ${files})
+
+add_executable(templatemaker templatemaker.cpp)
+target_link_libraries(templatemaker stdc++fs)
+target_compile_definitions(templatemaker PUBLIC CMAKE_BUILD)
