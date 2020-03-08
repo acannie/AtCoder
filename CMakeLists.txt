@@ -29,11 +29,11 @@ foreach(file ${files})
     set(BINARY ${filename}_lib)
     message("${BINARY}")
     add_library(${BINARY} STATIC ${SOURCES})
+    target_compile_definitions(${BINARY} PUBLIC WOMAIN)
 
     set(BINARY ${filename})
     message("${BINARY}")
     add_executable(${BINARY} ${SOURCES})
-    target_compile_definitions(${BINARY} PUBLIC WIMAIN)
 endforeach(file ${files})
 
 file(GLOB_RECURSE files "tst/${pattern}")

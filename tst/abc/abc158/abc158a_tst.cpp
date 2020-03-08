@@ -10,8 +10,36 @@ int main(int argc, char **argv) {
 
 TEST(Test1, case1) {
 
-  std::string in = "1 2 3 6"s;
-  std::string out = "6 6"s;
+  std::string in = "ABA"s;
+  std::string out = "Yes"s;
+
+  std::ostringstream ost;
+  std::istringstream ist(in + "\n");
+
+  solve(ist, ost);
+  std::string ostr = ost.str();
+
+  EXPECT_EQ(ostr, out + "\n");
+}
+
+TEST(Test1, case2) {
+
+  std::string in = "BBA"s;
+  std::string out = "Yes"s;
+
+  std::ostringstream ost;
+  std::istringstream ist(in + "\n");
+
+  solve(ist, ost);
+  std::string ostr = ost.str();
+
+  EXPECT_EQ(ostr, out + "\n");
+}
+
+TEST(Test1, case3) {
+
+  std::string in = "BBB"s;
+  std::string out = "No"s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");

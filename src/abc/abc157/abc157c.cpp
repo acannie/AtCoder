@@ -65,7 +65,7 @@ void solve(std::istream& ist, std::ostream& ost)
     ost << endl;
 }
 
-#ifdef WIMAIN
+#ifndef WOMAIN
 int main()
 {
     solve(std::cin, std::cout);
