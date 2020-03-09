@@ -18,15 +18,15 @@ void solve(std::istream &ist, std::ostream &ost)
     ist >> S;
     ist >> Q;
 
-    struct TFC Q_uery[Q];
+    struct TFC Query[Q];
 
     for (int i = 0; i < Q; i++)
     {
-        ist >> Q_uery[i].T;
-        if (Q_uery[i].T == 2)
+        ist >> Query[i].T;
+        if (Query[i].T == 2)
         {
-            ist >> Q_uery[i].F;
-            ist >> Q_uery[i].C;
+            ist >> Query[i].F;
+            ist >> Query[i].C;
         }
     }
 
@@ -42,39 +42,27 @@ void solve(std::istream &ist, std::ostream &ost)
 
     for (int i = 0; i < Q; i++)
     {
-        if (Q_uery[i].T == 1)
+        if (Query[i].T == 1)
         {
             mode = !mode;
+            continue;
+        }
+        if ((Query[i].F == 1) ^ mode)
+        {
+            deq.emplace_back(Query[i].C);
         }
         else
         {
-            if ((Q_uery[i].F == 1 && mode) || (Q_uery[i].F == 2 && !mode))
-            {
-                deq.emplace_front(Q_uery[i].C);
-            }
-            else if ((Q_uery[i].F == 1 && !mode) || (Q_uery[i].F == 2 && mode))
-            {
-                deq.emplace_back(Q_uery[i].C);
-            }
+            deq.emplace_front(Query[i].C);
         }
     }
 
-    if (mode)
+    if (!mode) reverse(deq.begin(), deq.end());
+    for (auto it = deq.begin(); it != deq.end(); ++it)
     {
-        for (auto it = deq.begin(); it != deq.end(); ++it)
-        {
-            ost << *it;
-        }
-        ost << endl;
+        ost << *it;
     }
-    else
-    {
-        for (auto it = deq.rbegin(), e = deq.rend(); it != e; ++it)
-        {
-            ost << *it;
-        }
-        ost << endl;
-    }
+    ost << endl;
 }
 
 #ifndef WOMAIN

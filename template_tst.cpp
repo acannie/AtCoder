@@ -3,16 +3,17 @@
 
 using namespace std::literals::string_literals;
 
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+int main(int argc, char **argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
 
 /*---------- case 1 ----------*/
-TEST(Test1, case1) {
-
-  std::string in = ""s;
-  std::string out = ""s;
+TEST(Test1, case1)
+{
+  std::string in = R"()"s;
+  std::string out = R"()"s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");
@@ -24,10 +25,10 @@ TEST(Test1, case1) {
 }
 
 /*---------- case 2 ----------*/
-TEST(Test1, case2) {
-
-  std::string in = ""s;
-  std::string out = ""s;
+TEST(Test1, case2)
+{
+  std::string in = R"()"s;
+  std::string out = R"()"s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");
@@ -39,10 +40,10 @@ TEST(Test1, case2) {
 }
 
 /*---------- case 3 ----------*/
-TEST(Test1, case3) {
-
-  std::string in = ""s;
-  std::string out = ""s;
+TEST(Test1, case3)
+{
+  std::string in = R"()"s;
+  std::string out = R"()"s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");
