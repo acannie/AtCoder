@@ -11,7 +11,6 @@ void solve(std::istream& ist, std::ostream& ost)
 
     /* ------- 計算 ------- */
 
-    long long red, blue;
     long long sum = A + B;
 
     long long ans = 0;

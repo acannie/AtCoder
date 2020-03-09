@@ -1,25 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(std::istream& ist, std::ostream& ost)
+void solve(std::istream &ist, std::ostream &ost)
 {
     /* ------- 宣言と入力 ------- */
 
-    int N;
+    int N, T;
 
-    //ist >> N;
+    ist >> N >> T;
 
-    int a[N];
+    int a[N], b[N];
 
-    for(int i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
     {
-        //ist >> a[i];
+        ist >> a[i] >> b[i];
     }
 
     /* ------- 計算 ------- */
 
     //ost << ans << endl;
-
 }
 
 #ifndef WOMAIN
