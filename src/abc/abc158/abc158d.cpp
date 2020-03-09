@@ -8,7 +8,7 @@ typedef struct TFC
     string C;
 };
 
-void solve(std::istream& ist, std::ostream& ost)
+void solve(std::istream &ist, std::ostream &ost)
 {
     /* ------- 宣言と入力 ------- */
 
@@ -33,44 +33,45 @@ void solve(std::istream& ist, std::ostream& ost)
     /* ------- 計算 ------- */
 
     bool mode = true;
+    deque<string> deq;
+
+    for (int i = 0; i < S.length(); i++)
+    {
+        deq.emplace_back(S.substr(i, 1));
+    }
 
     for (int i = 0; i < Q; i++)
     {
         if (Q_uery[i].T == 1)
         {
-            mode != mode;
+            mode = !mode;
         }
         else
         {
-            if (Q_uery[i].F == 1 && mode)
+            if ((Q_uery[i].F == 1 && mode) || (Q_uery[i].F == 2 && !mode))
             {
-                S = Q_uery[i].C + S;
+                deq.emplace_front(Q_uery[i].C);
             }
-            else if (Q_uery[i].F == 1 && !mode)
+            else if ((Q_uery[i].F == 1 && !mode) || (Q_uery[i].F == 2 && mode))
             {
-                S = S + Q_uery[i].C;
-            }
-            else if (Q_uery[i].F == 2 && mode)
-            {
-                S = S + Q_uery[i].C;
-            }
-            else if (Q_uery[i].F == 2 && !mode)
-            {
-                S = Q_uery[i].C + S;
+                deq.emplace_back(Q_uery[i].C);
             }
         }
     }
 
-    if (mode == true)
+    if (mode)
     {
-        ost << S << endl;
+        for (auto it = deq.begin(); it != deq.end(); ++it)
+        {
+            ost << *it;
+        }
+        ost << endl;
     }
     else
     {
-        int len = S.length();
-        for (int i = 0; i < len; i++)
+        for (auto it = deq.rbegin(), e = deq.rend(); it != e; ++it)
         {
-            ost << S[len - 1 - i];
+            ost << *it;
         }
         ost << endl;
     }
@@ -83,4 +84,3 @@ int main()
     return 0;
 }
 #endif
-
