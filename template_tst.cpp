@@ -8,10 +8,41 @@ int main(int argc, char **argv) {
     return RUN_ALL_TESTS();
 }
 
+/*---------- case 1 ----------*/
 TEST(Test1, case1) {
 
-  std::string in = "1 2 3 6"s;
-  std::string out = "6 6"s;
+  std::string in = ""s;
+  std::string out = ""s;
+
+  std::ostringstream ost;
+  std::istringstream ist(in + "\n");
+
+  solve(ist, ost);
+  std::string ostr = ost.str();
+
+  EXPECT_EQ(ostr, out + "\n");
+}
+
+/*---------- case 2 ----------*/
+TEST(Test1, case2) {
+
+  std::string in = ""s;
+  std::string out = ""s;
+
+  std::ostringstream ost;
+  std::istringstream ist(in + "\n");
+
+  solve(ist, ost);
+  std::string ostr = ost.str();
+
+  EXPECT_EQ(ostr, out + "\n");
+}
+
+/*---------- case 3 ----------*/
+TEST(Test1, case3) {
+
+  std::string in = ""s;
+  std::string out = ""s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");

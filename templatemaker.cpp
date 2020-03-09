@@ -16,7 +16,8 @@ std::string read_file(fs::path template_path)
     return templ;
 }
 
-fs::path get_relative_path(std::string src_type, std::string contest_type_name, std::string contest_name) {
+fs::path get_relative_path(std::string src_type, std::string contest_type_name, std::string contest_name)
+{
     fs::path relative_path = fs::path("");
     if (contest_type_name != "n")
     {
@@ -119,6 +120,15 @@ int main(int const argc, const char *const argv[], char *envv[])
             return res;
         }
     }
+
+    /*--------- contest ----------*/
+    // std::string contest_file_name = "contest";
+
+    // int res = 0;
+    // if ((res = create_file("tst", tst_templ, task_name, path, contest_type_name, contest_name, "_tst")) != 0)
+    // {
+    //     return res;
+    // }
 
     std::cout << "Done! :)" << std::endl;
 

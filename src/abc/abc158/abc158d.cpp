@@ -42,19 +42,19 @@ void solve(std::istream& ist, std::ostream& ost)
         }
         else
         {
-            if (Q_uery[i].F == 1 && mode == true)
+            if (Q_uery[i].F == 1 && mode)
             {
                 S = Q_uery[i].C + S;
             }
-            else if (Q_uery[i].F == 1 && mode == false)
+            else if (Q_uery[i].F == 1 && !mode)
             {
                 S = S + Q_uery[i].C;
             }
-            else if (Q_uery[i].F == 2 && mode == true)
+            else if (Q_uery[i].F == 2 && mode)
             {
                 S = S + Q_uery[i].C;
             }
-            else if (Q_uery[i].F == 2 && mode == false)
+            else if (Q_uery[i].F == 2 && !mode)
             {
                 S = Q_uery[i].C + S;
             }

@@ -3,15 +3,17 @@
 
 using namespace std::literals::string_literals;
 
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+int main(int argc, char **argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
 
+/*---------- case 1 ----------*/
 TEST(Test1, case1) {
 
-  std::string in = "8 3 4"s;
-  std::string out = "4"s;
+  std::string in = "hihi"s;
+  std::string out = "Yes"s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");
@@ -22,10 +24,11 @@ TEST(Test1, case1) {
   EXPECT_EQ(ostr, out + "\n");
 }
 
+/*---------- case 2 ----------*/
 TEST(Test1, case2) {
 
-  std::string in = "8 0 4"s;
-  std::string out = "0"s;
+  std::string in = "hi"s;
+  std::string out = "Yes"s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");
@@ -36,10 +39,11 @@ TEST(Test1, case2) {
   EXPECT_EQ(ostr, out + "\n");
 }
 
+/*---------- case 3 ----------*/
 TEST(Test1, case3) {
 
-  std::string in = "6 2 4"s;
-  std::string out = "2"s;
+  std::string in = "ha"s;
+  std::string out = "No"s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");
@@ -49,4 +53,3 @@ TEST(Test1, case3) {
 
   EXPECT_EQ(ostr, out + "\n");
 }
-
