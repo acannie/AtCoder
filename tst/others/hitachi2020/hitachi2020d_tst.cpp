@@ -66,5 +66,6 @@ TEST(Test1, case4) {
   std::string ostr = ost.str();
 
   EXPECT_EQ(ostr, out + "\n");
+}
 
 
