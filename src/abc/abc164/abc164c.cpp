@@ -8,20 +8,18 @@ void solve(std::istream &ist, std::ostream &ost)
     int N;
     ist >> N;
 
-    vector<string> S;
-
     unordered_set<string> keihin;
 
     for (int i = 0; i < N; i++)
     {
         string input;
         ist >> input;
-        S.emplace_back(input);
         keihin.emplace(input);
     }
 
     /* ------- 計算 ------- */
-    cout << keihin.size() << endl;
+
+    ost << keihin.size() << endl;
 }
 
 #ifndef WOMAIN
