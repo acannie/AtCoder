@@ -1,26 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(std::istream& ist, std::ostream& ost)
+void solve(std::istream &ist, std::ostream &ost)
 {
     /* ------- 宣言と入力 ------- */
 
     int N;
+
     ist >> N;
 
-    vector<int> a;
+    vector<long long> A;
 
-    for(int i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
     {
-        int input;
-        ist >> input;
-        a.emplace_back(input);
+        long long tmp;
+        ist >> tmp;
+        A.emplace_back(tmp);
     }
 
     /* ------- 計算 ------- */
 
     //ost << ans << endl;
-
 }
 
 #ifndef WOMAIN
