@@ -6,15 +6,14 @@ void solve(std::istream& ist, std::ostream& ost)
     /* ------- 宣言と入力 ------- */
 
     int N;
-    ist >> N;
 
-    vector<int> a;
+    //ist >> N;
+
+    int a[N];
 
     for(int i = 0; i < N; i++)
     {
-        int input;
-        ist >> input;
-        a.emplace_back(input);
+        //ist >> a[i];
     }
 
     /* ------- 計算 ------- */
@@ -30,3 +29,4 @@ int main()
     return 0;
 }
 #endif
+
