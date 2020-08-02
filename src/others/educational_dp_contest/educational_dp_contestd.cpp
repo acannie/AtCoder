@@ -1,26 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(std::istream& ist, std::ostream& ost)
+void solve(std::istream &ist, std::ostream &ost)
 {
     /* ------- 宣言と入力 ------- */
 
-    int N;
-    ist >> N;
+    int N, W;
+    ist >> N >> W;
 
-    vector<int> a;
+    vector<int> w;
+    vector<int> v;
 
-    for(int i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
     {
-        int input;
-        ist >> input;
-        a.emplace_back(input);
+        int input_w, input_v;
+        ist >> input_w >> input_v;
+        w.emplace_back(input_w);
+        v.emplace_back(input_v);
     }
 
     /* ------- 計算 ------- */
 
-    //ost << ans << endl;
+    vector<vector<int>> dp_table;
 
+    
+
+
+
+    //ost << ans << endl;
 }
 
 #ifndef WOMAIN
@@ -30,4 +37,3 @@ int main()
     return 0;
 }
 #endif
-
