@@ -12,8 +12,9 @@ int main(int argc, char **argv)
 /*---------- case 1 ----------*/
 TEST(Test1, case1)
 {
-  std::string in = R"()"s;
-  std::string out = R"()"s;
+  std::string in = R"(4
+10 30 40 20)"s;
+  std::string out = R"(30)"s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");
@@ -27,8 +28,9 @@ TEST(Test1, case1)
 /*---------- case 2 ----------*/
 TEST(Test1, case2)
 {
-  std::string in = R"()"s;
-  std::string out = R"()"s;
+  std::string in = R"(2
+10 10)"s;
+  std::string out = R"(0)"s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");
@@ -42,8 +44,9 @@ TEST(Test1, case2)
 /*---------- case 3 ----------*/
 TEST(Test1, case3)
 {
-  std::string in = R"()"s;
-  std::string out = R"()"s;
+  std::string in = R"(6
+30 10 60 10 60 50)"s;
+  std::string out = R"(40)"s;
 
   std::ostringstream ost;
   std::istringstream ist(in + "\n");
