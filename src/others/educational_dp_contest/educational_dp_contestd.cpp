@@ -21,13 +21,33 @@ void solve(std::istream &ist, std::ostream &ost)
 
     /* ------- 計算 ------- */
 
-    vector<vector<int>> dp_table;
+    vector<vector<long long>> dp_table;
 
-    
+    dp_table.emplace_back(0);
+    for (int w_i = 0; w_i <= W; w_i++)
+    {
+        dp_table.at(0).emplace_back(0);
+    }
 
+    for (int i = 0; i < N; i++)
+    {
+        dp_table.emplace_back(0);
+        for (int w_i = 0; w_i <= W; w_i++)
+        {
+            // i番目の品物を追加できない場合の価値
+            long long  insert_value = dp_table.at(i).at(w_i);
 
+            // i番目の品物を追加できる（する）場合の価値
+            if (w.at(i) <= w_i)
+            {
+                insert_value = max(dp_table.at(i).at(w_i - w.at(i)) + v.at(i), insert_value);
+            }
 
-    //ost << ans << endl;
+            dp_table.at(i + 1).emplace_back(insert_value);
+        }
+    }
+
+    ost << dp_table.at(N).at(W) << endl;
 }
 
 #ifndef WOMAIN
