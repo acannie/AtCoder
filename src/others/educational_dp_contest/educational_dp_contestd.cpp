@@ -24,7 +24,7 @@ void solve(std::istream &ist, std::ostream &ost)
     vector<vector<long long>> dp_table;
 
     dp_table.emplace_back(0);
-    for (int w_i = 0; w_i <= W; w_i++)
+    for (int j = 0; j <= W; j++)
     {
         dp_table.at(0).emplace_back(0);
     }
@@ -32,15 +32,15 @@ void solve(std::istream &ist, std::ostream &ost)
     for (int i = 0; i < N; i++)
     {
         dp_table.emplace_back(0);
-        for (int w_i = 0; w_i <= W; w_i++)
+        for (int j = 0; j <= W; j++)
         {
             // i番目の品物を追加できない場合の価値
-            long long  insert_value = dp_table.at(i).at(w_i);
+            long long  insert_value = dp_table.at(i).at(j);
 
             // i番目の品物を追加できる（する）場合の価値
-            if (w.at(i) <= w_i)
+            if (w.at(i) <= j)
             {
-                insert_value = max(dp_table.at(i).at(w_i - w.at(i)) + v.at(i), insert_value);
+                insert_value = max(dp_table.at(i).at(j - w.at(i)) + v.at(i), insert_value);
             }
 
             dp_table.at(i + 1).emplace_back(insert_value);
@@ -48,6 +48,23 @@ void solve(std::istream &ist, std::ostream &ost)
     }
 
     ost << dp_table.at(N).at(W) << endl;
+
+    // for (int i = 0; i < N; i++)
+    // {
+    //     for (int j = 0; j < W; j++)
+    //     {
+    //         if (dp_table.at(i).at(j) == INT_MAX)
+    //         {
+    //             cout << "INF"<< " ";
+    //         }
+    //         else
+    //         {
+    //             cout << dp_table.at(i).at(j) << " ";
+    //         }
+            
+    //     }
+    //     cout <<endl;
+    // }
 }
 
 #ifndef WOMAIN
