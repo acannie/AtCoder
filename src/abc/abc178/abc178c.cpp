@@ -1,6 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+long long get_mod(long long N, long long mod)
+{
+    if (N < 0)
+    {
+        N += mod;
+    }
+    else if (N >= mod)
+    {
+        N %= mod;
+    }
+    return N;
+}
+
 void solve(std::istream &ist, std::ostream &ost)
 {
     /* ------- 宣言と入力 ------- */
@@ -18,10 +31,7 @@ void solve(std::istream &ist, std::ostream &ost)
     for (long long i = 0; i < N; i++)
     {
         ans *= 10;
-        if (ans >= mod)
-        {
-            ans %= mod;
-        }
+        get_mod(ans, mod);
     }
 
     // 0-8で構成
@@ -31,17 +41,11 @@ void solve(std::istream &ist, std::ostream &ost)
     for (long long i = 0; i < N; i++)
     {
         not_ans *= 9;
-        if (not_ans >= mod)
-        {
-            not_ans %= mod;
-        }
+        get_mod(not_ans, mod);
     }
 
     ans -= not_ans;
-    if (ans < 0)
-    {
-        ans += mod;
-    }
+    get_mod(ans, mod);
 
     // 1-9で構成
 
@@ -50,17 +54,11 @@ void solve(std::istream &ist, std::ostream &ost)
     for (long long i = 0; i < N; i++)
     {
         not_ans *= 9;
-        if (not_ans >= mod)
-        {
-            not_ans %= mod;
-        }
+        get_mod(not_ans, mod);
     }
 
     ans -= not_ans;
-    if (ans < 0)
-    {
-        ans += mod;
-    }
+    get_mod(ans, mod);
 
     // 1-8で構成を1つ足す
 
@@ -69,17 +67,11 @@ void solve(std::istream &ist, std::ostream &ost)
     for (long long i = 0; i < N; i++)
     {
         plus_ans *= 8;
-        if (plus_ans >= mod)
-        {
-            plus_ans %= mod;
-        }
+        get_mod(plus_ans, mod);
     }
 
     ans += plus_ans;
-    if (ans >= mod)
-    {
-        ans %= mod;
-    }
+    get_mod(ans, mod);
 
     ost << ans << endl;
 }
